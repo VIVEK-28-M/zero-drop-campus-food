@@ -16,6 +16,7 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as ItemIdRouteImport } from './routes/item.$id'
 import { Route as RegisterStudentRouteImport } from './routes/register.student'
 import { Route as RegisterVendorRouteImport } from './routes/register.vendor'
 
@@ -54,6 +55,11 @@ const MarketplaceRoute = MarketplaceRouteImport.update({
   path: '/marketplace',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ItemIdRoute = ItemIdRouteImport.update({
+  id: '/item/$id',
+  path: '/item/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterStudentRoute = RegisterStudentRouteImport.update({
   id: '/register/student',
   path: '/register/student',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/item/$id': typeof ItemIdRoute
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/item/$id': typeof ItemIdRoute
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/item/$id': typeof ItemIdRoute
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/marketplace'
+    | '/item/$id'
     | '/register/student'
     | '/register/vendor'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/marketplace'
+    | '/item/$id'
     | '/register/student'
     | '/register/vendor'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/marketplace'
+    | '/item/$id'
     | '/register/student'
     | '/register/vendor'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
   MarketplaceRoute: typeof MarketplaceRoute
+  ItemIdRoute: typeof ItemIdRoute
   RegisterStudentRoute: typeof RegisterStudentRoute
   RegisterVendorRoute: typeof RegisterVendorRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/item/$id': {
+      id: '/item/$id'
+      path: '/item/$id'
+      fullPath: '/item/$id'
+      preLoaderRoute: typeof ItemIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register/student': {
       id: '/register/student'
       path: '/register/student'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
   MarketplaceRoute: MarketplaceRoute,
+  ItemIdRoute: ItemIdRoute,
   RegisterStudentRoute: RegisterStudentRoute,
   RegisterVendorRoute: RegisterVendorRoute,
 }
