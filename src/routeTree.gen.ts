@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
@@ -21,6 +22,7 @@ import { Route as ItemIdRouteImport } from './routes/item.$id'
 import { Route as RegisterStudentRouteImport } from './routes/register.student'
 import { Route as RegisterVendorRouteImport } from './routes/register.vendor'
 import { Route as StudentOrdersRouteImport } from './routes/student.orders'
+import { Route as VendorDashboardRouteImport } from './routes/vendor.dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +42,11 @@ const FaqRoute = FaqRouteImport.update({
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   id: '/forgot-password',
   path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
@@ -82,12 +89,18 @@ const StudentOrdersRoute = StudentOrdersRouteImport.update({
   path: '/student/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VendorDashboardRoute = VendorDashboardRouteImport.update({
+  id: '/vendor/dashboard',
+  path: '/vendor/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/help': typeof HelpRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
@@ -96,12 +109,14 @@ export interface FileRoutesByFullPath {
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
   '/student/orders': typeof StudentOrdersRoute
+  '/vendor/dashboard': typeof VendorDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/help': typeof HelpRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
@@ -110,6 +125,7 @@ export interface FileRoutesByTo {
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
   '/student/orders': typeof StudentOrdersRoute
+  '/vendor/dashboard': typeof VendorDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -117,6 +133,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/help': typeof HelpRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
@@ -125,6 +142,7 @@ export interface FileRoutesById {
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
   '/student/orders': typeof StudentOrdersRoute
+  '/vendor/dashboard': typeof VendorDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -133,6 +151,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/faq'
     | '/forgot-password'
+    | '/help'
     | '/how-it-works'
     | '/login'
     | '/marketplace'
@@ -141,12 +160,14 @@ export interface FileRouteTypes {
     | '/register/student'
     | '/register/vendor'
     | '/student/orders'
+    | '/vendor/dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/faq'
     | '/forgot-password'
+    | '/help'
     | '/how-it-works'
     | '/login'
     | '/marketplace'
@@ -155,12 +176,14 @@ export interface FileRouteTypes {
     | '/register/student'
     | '/register/vendor'
     | '/student/orders'
+    | '/vendor/dashboard'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/faq'
     | '/forgot-password'
+    | '/help'
     | '/how-it-works'
     | '/login'
     | '/marketplace'
@@ -169,6 +192,7 @@ export interface FileRouteTypes {
     | '/register/student'
     | '/register/vendor'
     | '/student/orders'
+    | '/vendor/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -176,6 +200,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   FaqRoute: typeof FaqRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  HelpRoute: typeof HelpRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
   MarketplaceRoute: typeof MarketplaceRoute
@@ -184,6 +209,7 @@ export interface RootRouteChildren {
   RegisterStudentRoute: typeof RegisterStudentRoute
   RegisterVendorRoute: typeof RegisterVendorRoute
   StudentOrdersRoute: typeof StudentOrdersRoute
+  VendorDashboardRoute: typeof VendorDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -214,6 +240,13 @@ declare module '@tanstack/react-router' {
       path: '/forgot-password'
       fullPath: '/forgot-password'
       preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-it-works': {
@@ -272,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentOrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vendor/dashboard': {
+      id: '/vendor/dashboard'
+      path: '/vendor/dashboard'
+      fullPath: '/vendor/dashboard'
+      preLoaderRoute: typeof VendorDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -280,6 +320,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   FaqRoute: FaqRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  HelpRoute: HelpRoute,
   HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
   MarketplaceRoute: MarketplaceRoute,
@@ -288,6 +329,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterStudentRoute: RegisterStudentRoute,
   RegisterVendorRoute: RegisterVendorRoute,
   StudentOrdersRoute: StudentOrdersRoute,
+  VendorDashboardRoute: VendorDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
