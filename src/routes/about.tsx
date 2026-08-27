@@ -78,14 +78,14 @@ function AboutPage() {
                 <span className="font-medium">Participating canteens</span>
                 <span className="font-display font-bold text-primary">{canteens}</span>
               </div>
-              <Slider value={[canteens]} min={2} max={40} onValueChange={([v]) => setCanteens(v)} />
+              <Slider value={[canteens]} min={2} max={40} onValueChange={([v]) => setCanteens(v ?? canteens)} />
             </div>
             <div>
               <div className="mb-3 flex justify-between text-sm">
                 <span className="font-medium">Student participation rate</span>
                 <span className="font-display font-bold text-primary">{participation}%</span>
               </div>
-              <Slider value={[participation]} min={10} max={100} onValueChange={([v]) => setParticipation(v)} />
+              <Slider value={[participation]} min={10} max={100} onValueChange={([v]) => setParticipation(v ?? participation)} />
             </div>
           </div>
         </div>
