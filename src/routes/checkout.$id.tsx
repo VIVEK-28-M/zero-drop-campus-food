@@ -42,12 +42,13 @@ function CheckoutPage() {
   const { id } = Route.useParams();
   const { qty } = Route.useSearch();
   const navigate = useNavigate();
-  const now = useNow(1000);
+  const tick = useNow(1000);
   const { customItems, placeOrder } = useApp();
   const [method, setMethod] = useState<Order["method"]>("upi");
   const [slot, setSlot] = useState("Next 15 min");
 
   const item = itemById(id, customItems);
+  const now = tick ?? item?.listedAt ?? 0;
 
   if (!item) {
     return (

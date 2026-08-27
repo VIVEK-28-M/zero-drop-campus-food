@@ -34,10 +34,11 @@ const NAV = [{ to: "/vendor/dashboard", label: "Overview", icon: LayoutDashboard
 const VENDOR_ID = "v1";
 
 function VendorDashboardPage() {
-  const now = useNow(1000);
+  const tick = useNow(1000);
   const { customItems, stockLeft, markSoldOut, verifyOrder, orders } = useApp();
   const [code, setCode] = useState("");
 
+  const now = tick ?? 0;
   const vendor = vendorById(VENDOR_ID);
   const listings = [...customItems, ...ITEMS].filter((i) => i.vendorId === VENDOR_ID);
 

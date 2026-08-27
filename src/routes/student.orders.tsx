@@ -33,7 +33,7 @@ export const Route = createFileRoute("/student/orders")({
 const NAV = [{ to: "/student/orders", label: "My Orders", icon: ShoppingBag }];
 
 function StudentOrdersPage() {
-  const now = useNow(1000);
+  const now = useNow(1000) ?? 0;
   const { orders, favorites, customItems, cancelOrder, stockLeft, userName } = useApp();
   const [tab, setTab] = useState<"active" | "history" | "favorites">("active");
 
@@ -69,7 +69,7 @@ function StudentOrdersPage() {
         <div className="space-y-4">
           {active.length === 0 && <Empty label="No active pickups right now." />}
           {active.map((o) => {
-            const left = o.pickupBy - now;
+            const left = now ? o.pickupBy - now : 0;
             return (
               <div
                 key={o.id}
@@ -87,7 +87,7 @@ function StudentOrdersPage() {
                   <p className="mt-4 text-sm">
                     Pickup closes in{" "}
                     <span className="font-display font-bold tabular-nums text-urgency">
-                      {fmtDuration(left)}
+                      {now ? fmtDuration(left) : "--:--:--"}
                     </span>
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">
