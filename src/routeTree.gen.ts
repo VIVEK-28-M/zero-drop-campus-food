@@ -16,6 +16,7 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as CheckoutIdRouteImport } from './routes/checkout.$id'
 import { Route as ItemIdRouteImport } from './routes/item.$id'
 import { Route as RegisterStudentRouteImport } from './routes/register.student'
 import { Route as RegisterVendorRouteImport } from './routes/register.vendor'
@@ -55,6 +56,11 @@ const MarketplaceRoute = MarketplaceRouteImport.update({
   path: '/marketplace',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutIdRoute = CheckoutIdRouteImport.update({
+  id: '/checkout/$id',
+  path: '/checkout/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ItemIdRoute = ItemIdRouteImport.update({
   id: '/item/$id',
   path: '/item/$id',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/checkout/$id': typeof CheckoutIdRoute
   '/item/$id': typeof ItemIdRoute
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/checkout/$id': typeof CheckoutIdRoute
   '/item/$id': typeof ItemIdRoute
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/checkout/$id': typeof CheckoutIdRoute
   '/item/$id': typeof ItemIdRoute
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/marketplace'
+    | '/checkout/$id'
     | '/item/$id'
     | '/register/student'
     | '/register/vendor'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/marketplace'
+    | '/checkout/$id'
     | '/item/$id'
     | '/register/student'
     | '/register/vendor'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/login'
     | '/marketplace'
+    | '/checkout/$id'
     | '/item/$id'
     | '/register/student'
     | '/register/vendor'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
   MarketplaceRoute: typeof MarketplaceRoute
+  CheckoutIdRoute: typeof CheckoutIdRoute
   ItemIdRoute: typeof ItemIdRoute
   RegisterStudentRoute: typeof RegisterStudentRoute
   RegisterVendorRoute: typeof RegisterVendorRoute
@@ -211,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkout/$id': {
+      id: '/checkout/$id'
+      path: '/checkout/$id'
+      fullPath: '/checkout/$id'
+      preLoaderRoute: typeof CheckoutIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/item/$id': {
       id: '/item/$id'
       path: '/item/$id'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
   MarketplaceRoute: MarketplaceRoute,
+  CheckoutIdRoute: CheckoutIdRoute,
   ItemIdRoute: ItemIdRoute,
   RegisterStudentRoute: RegisterStudentRoute,
   RegisterVendorRoute: RegisterVendorRoute,
