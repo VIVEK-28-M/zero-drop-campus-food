@@ -85,14 +85,14 @@ function StudentRegisterPage() {
       </div>
 
       <form onSubmit={submit} className="mt-8 space-y-4 rounded-2xl border border-border/70 bg-card p-6">
-        <Field label="Full name" error={errors.name}>
+        <Field label="Full name" error={errors["name"]}>
           <Input value={form.name} onChange={(e) => set("name", e.target.value)} placeholder="Aarav Verma" maxLength={80} />
         </Field>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field label="Roll number" error={errors.roll}>
+          <Field label="Roll number" error={errors["roll"]}>
             <Input value={form.roll} onChange={(e) => set("roll", e.target.value)} placeholder="22BCS1041" maxLength={20} />
           </Field>
-          <Field label="Hostel / dorm block" error={errors.block}>
+          <Field label="Hostel / dorm block" error={errors["block"]}>
             <Select value={form.block} onValueChange={(v) => set("block", v)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select block" />
@@ -107,10 +107,10 @@ function StudentRegisterPage() {
             </Select>
           </Field>
         </div>
-        <Field label="Campus email" error={errors.email}>
+        <Field label="Campus email" error={errors["email"]}>
           <Input value={form.email} onChange={(e) => set("email", e.target.value)} placeholder="aarav@campus.edu" maxLength={120} />
         </Field>
-        <Field label="Password" error={errors.password}>
+        <Field label="Password" error={errors["password"]}>
           <Input type="password" value={form.password} onChange={(e) => set("password", e.target.value)} placeholder="At least 6 characters" maxLength={64} />
         </Field>
 
@@ -142,7 +142,7 @@ export function Field({
   children,
 }: {
   label: string;
-  error?: string;
+  error?: string | undefined;
   children: React.ReactNode;
 }) {
   return (

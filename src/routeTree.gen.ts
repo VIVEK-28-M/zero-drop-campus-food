@@ -13,12 +13,16 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as CheckoutIdRouteImport } from './routes/checkout.$id'
 import { Route as ItemIdRouteImport } from './routes/item.$id'
 import { Route as RegisterStudentRouteImport } from './routes/register.student'
 import { Route as RegisterVendorRouteImport } from './routes/register.vendor'
+import { Route as StudentOrdersRouteImport } from './routes/student.orders'
+import { Route as VendorDashboardRouteImport } from './routes/vendor.dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +44,11 @@ const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
   id: '/how-it-works',
   path: '/how-it-works',
@@ -53,6 +62,11 @@ const LoginRoute = LoginRouteImport.update({
 const MarketplaceRoute = MarketplaceRouteImport.update({
   id: '/marketplace',
   path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutIdRoute = CheckoutIdRouteImport.update({
+  id: '/checkout/$id',
+  path: '/checkout/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ItemIdRoute = ItemIdRouteImport.update({
@@ -70,30 +84,48 @@ const RegisterVendorRoute = RegisterVendorRouteImport.update({
   path: '/register/vendor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentOrdersRoute = StudentOrdersRouteImport.update({
+  id: '/student/orders',
+  path: '/student/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VendorDashboardRoute = VendorDashboardRouteImport.update({
+  id: '/vendor/dashboard',
+  path: '/vendor/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/help': typeof HelpRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/checkout/$id': typeof CheckoutIdRoute
   '/item/$id': typeof ItemIdRoute
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
+  '/student/orders': typeof StudentOrdersRoute
+  '/vendor/dashboard': typeof VendorDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/help': typeof HelpRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/checkout/$id': typeof CheckoutIdRoute
   '/item/$id': typeof ItemIdRoute
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
+  '/student/orders': typeof StudentOrdersRoute
+  '/vendor/dashboard': typeof VendorDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -101,12 +133,16 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/faq': typeof FaqRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/help': typeof HelpRoute
   '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/checkout/$id': typeof CheckoutIdRoute
   '/item/$id': typeof ItemIdRoute
   '/register/student': typeof RegisterStudentRoute
   '/register/vendor': typeof RegisterVendorRoute
+  '/student/orders': typeof StudentOrdersRoute
+  '/vendor/dashboard': typeof VendorDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -115,36 +151,48 @@ export interface FileRouteTypes {
     | '/about'
     | '/faq'
     | '/forgot-password'
+    | '/help'
     | '/how-it-works'
     | '/login'
     | '/marketplace'
+    | '/checkout/$id'
     | '/item/$id'
     | '/register/student'
     | '/register/vendor'
+    | '/student/orders'
+    | '/vendor/dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/faq'
     | '/forgot-password'
+    | '/help'
     | '/how-it-works'
     | '/login'
     | '/marketplace'
+    | '/checkout/$id'
     | '/item/$id'
     | '/register/student'
     | '/register/vendor'
+    | '/student/orders'
+    | '/vendor/dashboard'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/faq'
     | '/forgot-password'
+    | '/help'
     | '/how-it-works'
     | '/login'
     | '/marketplace'
+    | '/checkout/$id'
     | '/item/$id'
     | '/register/student'
     | '/register/vendor'
+    | '/student/orders'
+    | '/vendor/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -152,12 +200,16 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   FaqRoute: typeof FaqRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  HelpRoute: typeof HelpRoute
   HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
   MarketplaceRoute: typeof MarketplaceRoute
+  CheckoutIdRoute: typeof CheckoutIdRoute
   ItemIdRoute: typeof ItemIdRoute
   RegisterStudentRoute: typeof RegisterStudentRoute
   RegisterVendorRoute: typeof RegisterVendorRoute
+  StudentOrdersRoute: typeof StudentOrdersRoute
+  VendorDashboardRoute: typeof VendorDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -190,6 +242,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/how-it-works': {
       id: '/how-it-works'
       path: '/how-it-works'
@@ -209,6 +268,13 @@ declare module '@tanstack/react-router' {
       path: '/marketplace'
       fullPath: '/marketplace'
       preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout/$id': {
+      id: '/checkout/$id'
+      path: '/checkout/$id'
+      fullPath: '/checkout/$id'
+      preLoaderRoute: typeof CheckoutIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/item/$id': {
@@ -232,6 +298,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterVendorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/student/orders': {
+      id: '/student/orders'
+      path: '/student/orders'
+      fullPath: '/student/orders'
+      preLoaderRoute: typeof StudentOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vendor/dashboard': {
+      id: '/vendor/dashboard'
+      path: '/vendor/dashboard'
+      fullPath: '/vendor/dashboard'
+      preLoaderRoute: typeof VendorDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -240,12 +320,16 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   FaqRoute: FaqRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  HelpRoute: HelpRoute,
   HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
   MarketplaceRoute: MarketplaceRoute,
+  CheckoutIdRoute: CheckoutIdRoute,
   ItemIdRoute: ItemIdRoute,
   RegisterStudentRoute: RegisterStudentRoute,
   RegisterVendorRoute: RegisterVendorRoute,
+  StudentOrdersRoute: StudentOrdersRoute,
+  VendorDashboardRoute: VendorDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

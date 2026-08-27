@@ -158,7 +158,7 @@ function MarketplacePage() {
           <Label>Max price</Label>
           <span className="font-display text-sm font-bold text-primary">₹{maxPrice}</span>
         </div>
-        <Slider value={[maxPrice]} min={10} max={150} step={5} onValueChange={([v]) => setMaxPrice(v)} />
+        <Slider value={[maxPrice]} min={10} max={150} step={5} onValueChange={([v]) => setMaxPrice(v ?? maxPrice)} />
       </div>
     </div>
   );

@@ -93,11 +93,11 @@ function VendorRegisterPage() {
       </div>
 
       <form onSubmit={submit} className="mt-8 space-y-4 rounded-2xl border border-border/70 bg-card p-6">
-        <Field label="Canteen / stall name" error={errors.canteen}>
+        <Field label="Canteen / stall name" error={errors["canteen"]}>
           <Input value={form.canteen} onChange={(e) => set("canteen", e.target.value)} placeholder="South Stories" maxLength={80} />
         </Field>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field label="Campus zone" error={errors.zone}>
+          <Field label="Campus zone" error={errors["zone"]}>
             <Select value={form.zone} onValueChange={(v) => set("zone", v)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select zone" />
@@ -111,19 +111,19 @@ function VendorRegisterPage() {
               </SelectContent>
             </Select>
           </Field>
-          <Field label="Stall number" error={errors.stall}>
+          <Field label="Stall number" error={errors["stall"]}>
             <Input value={form.stall} onChange={(e) => set("stall", e.target.value)} placeholder="A-03" maxLength={20} />
           </Field>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field label="FSSAI license number" error={errors.fssai}>
+          <Field label="FSSAI license number" error={errors["fssai"]}>
             <Input value={form.fssai} onChange={(e) => set("fssai", e.target.value)} placeholder="14-digit number" maxLength={14} inputMode="numeric" />
           </Field>
-          <Field label="WhatsApp number" error={errors.phone}>
+          <Field label="WhatsApp number" error={errors["phone"]}>
             <Input value={form.phone} onChange={(e) => set("phone", e.target.value)} placeholder="9876543210" maxLength={10} inputMode="numeric" />
           </Field>
         </div>
-        <Field label="Password" error={errors.password}>
+        <Field label="Password" error={errors["password"]}>
           <Input type="password" value={form.password} onChange={(e) => set("password", e.target.value)} placeholder="At least 6 characters" maxLength={64} />
         </Field>
 
