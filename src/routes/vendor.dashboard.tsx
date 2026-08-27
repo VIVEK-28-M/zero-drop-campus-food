@@ -76,7 +76,10 @@ function VendorDashboardPage() {
           />
           <Button
             onClick={() => {
-              if (!code.trim()) return toast.error("Enter a pickup code");
+              if (!code.trim()) {
+                toast.error("Enter a pickup code");
+                return;
+              }
               if (verifyOrder(code.trim())) {
                 toast.success("Pickup verified", { description: `${code.trim()} handed over.` });
                 setCode("");

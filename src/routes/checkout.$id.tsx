@@ -12,7 +12,7 @@ import { useNow } from "@/hooks/use-now";
 
 export const Route = createFileRoute("/checkout/$id")({
   validateSearch: (search: Record<string, unknown>) => ({
-    qty: Math.max(1, Number(search.qty ?? 1) || 1),
+    qty: Math.max(1, Number(search["qty"] ?? 1) || 1),
   }),
   head: () => ({
     meta: [
