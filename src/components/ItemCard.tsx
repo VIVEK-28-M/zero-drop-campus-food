@@ -69,15 +69,16 @@ export function ItemCard({ item, stock }: { item: Item; stock?: number }) {
         )}
       </div>
 
-
-      <div className="flex flex-1 flex-col gap-3 p-4">
+      <div className="flex flex-1 flex-col gap-3 p-4 pt-3">
         <div>
-          <h3 className="font-display font-semibold leading-snug">{item.name}</h3>
+          <h3 className="font-display text-[15px] font-semibold leading-snug tracking-tight">
+            {item.name}
+          </h3>
           {vendor && (
-            <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
-              <MapPin className="size-3" />
-              {vendor.name} · {vendor.block}
-              <span className="ml-auto flex items-center gap-0.5 text-urgency">
+            <p className="mt-1.5 flex items-center gap-1 text-xs text-muted-foreground">
+              <MapPin className="size-3 shrink-0" />
+              <span className="truncate">{vendor.name}</span>
+              <span className="ml-auto flex shrink-0 items-center gap-0.5 text-urgency">
                 <Star className="size-3 fill-urgency" />
                 {vendor.rating}
               </span>
@@ -85,21 +86,24 @@ export function ItemCard({ item, stock }: { item: Item; stock?: number }) {
           )}
         </div>
 
-        <div className="mt-auto space-y-2">
-          <div className="flex items-end justify-between">
-            <div>
-              <span className="font-display text-xl font-bold text-primary">{inr(price)}</span>
-              <span className="ml-2 text-sm text-muted-foreground line-through">
+        <div className="mt-auto space-y-2.5">
+          <div className="flex items-end justify-between gap-2">
+            <div className="flex items-baseline gap-2">
+              <span className="font-display text-2xl font-bold tracking-tight text-primary">
+                {inr(price)}
+              </span>
+              <span className="text-sm text-muted-foreground line-through">
                 {inr(item.basePrice)}
               </span>
             </div>
             {!soldOut && (
-              <span className="flex items-center gap-1 text-xs font-medium text-urgency">
-                <Flame className="size-3.5" />
+              <span className="flex items-center gap-1 rounded-full bg-urgency/10 px-2 py-0.5 text-[11px] font-medium text-urgency">
+                <Flame className="size-3" />
                 {left} left
               </span>
             )}
           </div>
+
           <div className="space-y-1">
             <Progress value={now ? windowProgress(item, now) * 100 : 0} className="h-1.5" />
             <p className="flex items-center gap-1 text-[11px] text-muted-foreground">
