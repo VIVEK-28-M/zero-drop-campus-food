@@ -32,7 +32,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { useNow } from "@/hooks/use-now";
 import { CAMPUS_STATS, ITEMS, LEADERBOARD, VENDORS, ZONES } from "@/lib/data";
-import { inr, timeLeft } from "@/lib/pricing";
+// import { inr, timeLeft } from "@/lib/pricing";
+import { currentPrice, inr, timeLeft } from "@/lib/pricing";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -171,16 +172,23 @@ function LandingPage() {
           />
           <div className="hero-vignette absolute inset-0" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-24 sm:px-6 sm:pt-32">
+        {/* <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-24 sm:px-6 sm:pt-32"> */}
+        <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-16 sm:px-6 sm:pb-20 sm:pt-24">
           <div className="max-w-2xl">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary backdrop-blur">
+            {/* <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary backdrop-blur"> */}
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-300/40 bg-black/25 px-4 py-1.5 text-xs font-semibold text-emerald-300 backdrop-blur-md">
               <span className="size-2 rounded-full bg-primary animate-pulse-soft" />
               {now ? liveDrops.length * 3 + 7 : "—"} live clearance drops right now
             </div>
-            <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-6xl">
+            {/* <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-6xl">
               Good food shouldn't die at <span className="text-primary">closing time.</span>
+            </h1> */}
+            <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-balance text-white sm:text-6xl">
+              Good food shouldn't die at{" "}
+              <span className="text-[#D4E157]">closing time.</span>
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-muted-foreground">
+            {/* <p className="mt-5 max-w-xl text-lg text-muted-foreground"> */}
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
               ZeroDrop is your campus marketplace where canteen surplus meets dynamic decay pricing
               — prices drop every few minutes until every plate is rescued.
             </p>
@@ -195,7 +203,8 @@ function LandingPage() {
                 <Link to="/how-it-works">How it works</Link>
               </Button>
             </div>
-            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
+            {/* <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground"> */}
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white/80">
               <span className="inline-flex items-center gap-1.5">
                 <BadgeCheck className="size-4 text-primary" /> FSSAI-verified stalls
               </span>
@@ -237,7 +246,10 @@ function LandingPage() {
               <span className="size-1.5 rounded-full bg-urgency" />
               <span className="font-medium">{i.name}</span>
               <span className="text-muted-foreground line-through">{inr(i.basePrice)}</span>
-              <span className="font-display font-bold text-primary">from {inr(i.floorPrice)}</span>
+              {/* <span className="font-display font-bold text-primary">down to {inr(i.floorPrice)}</span> */}
+              <span className="font-display font-bold text-primary">
+                → {inr(now ? currentPrice(i, now) : i.basePrice)}
+              </span>
             </span>
           ))}
         </div>

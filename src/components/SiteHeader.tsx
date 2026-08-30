@@ -52,7 +52,12 @@ export function SiteHeader() {
         <div className="hidden items-center gap-2 lg:flex">
           {role ? (
             <>
-              <Button asChild variant="outline" size="sm">
+              {/* <Button asChild variant="outline" size="sm"> */}
+              <Button
+                asChild
+                size="sm"
+                className="bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
+              >
                 <Link to={dashLink.to}>
                   <dashLink.icon className="size-4" />
                   {dashLink.label}
