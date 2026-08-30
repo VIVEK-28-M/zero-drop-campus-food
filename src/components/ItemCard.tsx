@@ -14,12 +14,16 @@ export function DietDot({ tag }: { tag: string }) {
         ? "bg-urgency"
         : "bg-primary";
   return (
-    <Badge variant="outline" className="gap-1.5 border-border/80 text-[11px] font-medium">
+    <Badge
+      variant="outline"
+      className="gap-1.5 border-transparent bg-background/70 text-[11px] font-medium backdrop-blur-md"
+    >
       <span className={`size-1.5 rounded-full ${color}`} />
       {tag}
     </Badge>
   );
 }
+
 
 export function ItemCard({ item, stock }: { item: Item; stock?: number }) {
   const now = useNow();
@@ -34,7 +38,7 @@ export function ItemCard({ item, stock }: { item: Item; stock?: number }) {
     <Link
       to="/item/$id"
       params={{ id: item.id }}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5"
+      className="group relative flex flex-col overflow-hidden rounded-3xl border border-border/60 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
@@ -43,16 +47,16 @@ export function ItemCard({ item, stock }: { item: Item; stock?: number }) {
           loading="lazy"
           width={1024}
           height={768}
-          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
         />
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/25 to-transparent" />
         <div className="absolute left-3 top-3 flex gap-1.5">
           {item.tags.slice(0, 2).map((t) => (
             <DietDot key={t} tag={t} />
           ))}
         </div>
         {pct > 0 && !soldOut && (
-          <div className="absolute right-3 top-3 rounded-full bg-urgency px-2.5 py-1 text-xs font-bold text-urgency-foreground glow-urgency">
+          <div className="absolute right-3 top-3 rounded-full bg-urgency px-2.5 py-1 text-xs font-bold text-urgency-foreground shadow-lg">
             −{pct}%
           </div>
         )}
@@ -65,14 +69,16 @@ export function ItemCard({ item, stock }: { item: Item; stock?: number }) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 p-4">
+      <div className="flex flex-1 flex-col gap-3 p-4 pt-3">
         <div>
-          <h3 className="font-display font-semibold leading-snug">{item.name}</h3>
+          <h3 className="font-display text-[15px] font-semibold leading-snug tracking-tight">
+            {item.name}
+          </h3>
           {vendor && (
-            <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
-              <MapPin className="size-3" />
-              {vendor.name} · {vendor.block}
-              <span className="ml-auto flex items-center gap-0.5 text-urgency">
+            <p className="mt-1.5 flex items-center gap-1 text-xs text-muted-foreground">
+              <MapPin className="size-3 shrink-0" />
+              <span className="truncate">{vendor.name}</span>
+              <span className="ml-auto flex shrink-0 items-center gap-0.5 text-urgency">
                 <Star className="size-3 fill-urgency" />
                 {vendor.rating}
               </span>
@@ -80,21 +86,24 @@ export function ItemCard({ item, stock }: { item: Item; stock?: number }) {
           )}
         </div>
 
-        <div className="mt-auto space-y-2">
-          <div className="flex items-end justify-between">
-            <div>
-              <span className="font-display text-xl font-bold text-primary">{inr(price)}</span>
-              <span className="ml-2 text-sm text-muted-foreground line-through">
+        <div className="mt-auto space-y-2.5">
+          <div className="flex items-end justify-between gap-2">
+            <div className="flex items-baseline gap-2">
+              <span className="font-display text-2xl font-bold tracking-tight text-primary">
+                {inr(price)}
+              </span>
+              <span className="text-sm text-muted-foreground line-through">
                 {inr(item.basePrice)}
               </span>
             </div>
             {!soldOut && (
-              <span className="flex items-center gap-1 text-xs font-medium text-urgency">
-                <Flame className="size-3.5" />
+              <span className="flex items-center gap-1 rounded-full bg-urgency/10 px-2 py-0.5 text-[11px] font-medium text-urgency">
+                <Flame className="size-3" />
                 {left} left
               </span>
             )}
           </div>
+
           <div className="space-y-1">
             <Progress value={now ? windowProgress(item, now) * 100 : 0} className="h-1.5" />
             <p className="flex items-center gap-1 text-[11px] text-muted-foreground">
