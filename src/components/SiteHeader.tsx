@@ -35,13 +35,15 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        {/* <nav className="hidden items-center gap-1 lg:flex"> */}
+        <nav className="hidden items-center gap-2 lg:flex">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
               activeProps={{ className: "bg-accent text-accent-foreground" }}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground"
+              // className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/70 transition-all hover:bg-secondary hover:text-primary"
               activeOptions={{ exact: false }}
             >
               {n.label}
@@ -77,7 +79,13 @@ export function SiteHeader() {
             </>
           ) : (
             <>
-              <Button asChild variant="ghost" size="sm">
+              {/* <Button asChild variant="ghost" size="sm"> */}
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground"
+              >
                 <Link to="/login">
                   <UserRound className="size-4" />
                   Sign in
