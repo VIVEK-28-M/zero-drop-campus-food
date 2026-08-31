@@ -1,8 +1,8 @@
-# Campus Harvest Hub
+# ZeroDrop
 
-Build a complete, production-grade, multi-page web application for "ZeroDrop" - a hyper-local campus food waste reduction & dynamic decay marketplace.
+Build a multi-page web application for "ZeroDrop" - a hyper-local campus food waste reduction & dynamic decay marketplace.
 
-The application must implement full client-side routing (React Router), responsive navigation (Header, Sidebar, Mobile Drawer, Footer), and persistent mock state management for realistic interactive flows across all necessary application modules.
+The application must implement client-side routing (React Router), responsive navigation (Header, Sidebar, Mobile Drawer, Footer), and persistent mock state management for realistic interactive flows across all necessary application modules.
 
 THEME & DESIGN SYSTEM:
 
@@ -100,19 +100,6 @@ FUNCTIONAL & INTERACTIVE REQUIREMENTS:
 
 - Fully mobile-responsive layout across all screens with interactive toast notifications for actions (payment success, ratings submitted, listing items, verifying passes).
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/a227dba6-5397-4970-ab86-541a522e9a40).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
 git clone <this-repository-url>
