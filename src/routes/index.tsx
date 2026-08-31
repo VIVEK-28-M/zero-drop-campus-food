@@ -219,12 +219,30 @@ function LandingPage() {
 
           {/* Live counters */}
           <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {[
-              { icon: UtensilsCrossed, label: "Meals rescued", value: meals.toLocaleString("en-IN") },
-              { icon: Leaf, label: "Kg waste prevented", value: kg.toLocaleString("en-IN") },
-              { icon: Coins, label: "Student savings", value: inr(money) },
-              { icon: Store, label: "Partner canteens", value: String(CAMPUS_STATS.canteens) },
-            ].map((s) => (
+            {
+            [
+  {
+    icon: UtensilsCrossed,
+    label: "Meals available now",
+    value: "50+",
+  },
+  {
+    icon: Leaf,
+    label: "Potential waste reduction",
+    value: "Up to 70%",
+  },
+  {
+    icon: Coins,
+    label: "Student savings",
+    value: "₹12–₹32",
+  },
+  {
+    icon: Timer,
+    label: "Pricing",
+    value: "Dynamic",
+  },
+]
+            .map((s) => (
               <div
                 key={s.label}
                 className="rounded-2xl border border-border/60 bg-card/70 p-4 backdrop-blur"
@@ -263,7 +281,7 @@ function LandingPage() {
               <Timer className="size-4" />
               Dropping right now
             </p>
-            <h2 className="mt-1 font-display text-3xl font-bold">Ending soonest</h2>
+            <h2 className="mt-1 font-display text-3xl font-bold">Ending soon</h2>
           </div>
           <Button asChild variant="ghost">
             <Link to="/marketplace">

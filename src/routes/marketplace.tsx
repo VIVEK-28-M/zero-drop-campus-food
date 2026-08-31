@@ -178,7 +178,7 @@ function MarketplacePage() {
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="ending">Ending soonest</SelectItem>
+            <SelectItem value="ending">Ending soon</SelectItem>
             <SelectItem value="price-asc">Lowest price</SelectItem>
             <SelectItem value="discount">Biggest discount</SelectItem>
             <SelectItem value="rating">Top rated canteen</SelectItem>
