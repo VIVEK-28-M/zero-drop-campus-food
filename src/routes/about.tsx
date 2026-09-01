@@ -109,13 +109,14 @@ function AboutPage() {
         <h2 className="font-display text-3xl font-bold">Born in a mess hall queue.</h2>
         <div className="space-y-4 text-muted-foreground">
           <p>
-            ZeroDrop started in 2025 when three final-year students watched the H4 mess staff dump
-            twelve untouched thalis at closing time — on the same night their hostel group chat was
-            hunting for cheap dinner options.
+            ZeroDrop was created in 2026 with a simple goal: to make sure good food
+            doesn't go to waste just because the day is ending. We wanted to create
+            an easy way for campus canteens to sell surplus food while giving students
+            access to affordable meals before closing time.
           </p>
           <p>
             The fix seemed obvious: a price that falls as the clock runs out, a QR pass instead of a
-            queue, and a WhatsApp ping when your favourite canteen lists a drop. One semester later,
+            queue, and a WhatsApp ping when your favourite canteen lists a drop. Today,
             {` ${CAMPUS_STATS.canteens} canteens`} clear their surplus through ZeroDrop every single
             day.
           </p>
